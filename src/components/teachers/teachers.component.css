@@ -1,0 +1,49 @@
+.teacher-card{
+  align-items: center;
+  background-color: var(--card-clr);
+  flex-direction: row-reverse;
+  border-radius: 40px;
+  margin-bottom: 20px;
+  padding: 2px 0;
+}
+
+.teacher-card:hover{
+  background-color: var(--hover-clr);
+  cursor: pointer;
+}
+
+.info-img{
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  background-color: var(--accent-clr);
+  border-radius: 50%;
+  padding: 20px;
+  font-size: 50px;
+  color: var(--text-color);
+  padding-top: 5px;
+}
+
+.txt-info{
+  color: var(--text-clr);
+  font-size: 20px;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+.teacher-info{
+  width: 100%;
+  margin: 0 2rem;
+}
+.teacher-info .txt-info:nth-child(2){
+  font-size: 1.5rem;
+  color: var(--secondary-text-clr);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}

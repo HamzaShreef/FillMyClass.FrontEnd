@@ -1,0 +1,107 @@
+
+
+#sidebar{
+  box-sizing: border-box;
+  height: 100vh;
+  width: 250px;
+  padding: 5px 1em;
+  background-color: var(--base-clr);
+  border-right: 1px solid var(--line-clr);
+
+  position: sticky;
+  top:0;
+  align-self: start;
+}
+
+
+#sidebar ul{
+  list-style: none;
+}
+
+/* #sidebar > ul > li:first-child{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+} */
+
+#sidebar ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  /*Remove this later if you place profile info here*/
+  margin-top: 50%;
+  padding-left: 0;
+}
+
+#sidebar ul a.active-link {
+  color: var(--accent-clr);
+
+  i{
+    fill:var(--accent-clr)
+  }
+}
+
+
+#sidebar a{
+  border-radius: .5em;
+  padding: .85em;
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding-left: 20px;
+}
+
+#sidebar i{
+  flex-shrink: 0;
+  fill: var(--text-color);
+  font-size: 32px;
+}
+
+#sidebar a span{
+  flex-grow: 1;
+  font-family: poppins;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#sidebar a:hover{
+  background-color: var(--hover-clr);
+}
+
+@media (max-width: 800px) {
+  #sidebar{
+    height: 70px;
+    width: 100%;
+    border-right: none;
+    border-top: 1px solid var(--line-clr);
+    padding: 0;
+    position: fixed;
+    top: unset;
+    bottom: 0;
+  }
+
+  #sidebar ul{
+    list-style: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 1em;
+  }
+  #sidebar ul li a{
+    padding: 10px 20px;
+    gap:0;
+  }
+
+  #sidebar ul li a span{
+    display: none;
+  }
+
+  #sidebar ul li a i{
+    font-size: 32px;
+  }
+
+}

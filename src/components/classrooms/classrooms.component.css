@@ -1,0 +1,99 @@
+.classroom-card{
+  background-color: #1A282F;
+  color: var(--text-clr);
+  text-align: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.classroom-card:hover{
+  background-color: var(--hover-clr);
+}
+
+.rooms-container{
+  padding-top: 10px;
+  gap: 1rem;
+  justify-content: space-around;
+}
+
+.card-img{
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    margin-inline-start: 0; /* This will be 'margin-right' in LTR and 'margin-left' in RTL */
+    margin-inline-end: auto;
+
+    background-color: var(--green-clr);
+    color: var(--text-clr);
+    font-size: 40px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+.txt-info{
+  padding: 10px;
+}
+
+
+.search-bar{
+  background-color: var(--dark-gray);
+    /* border-bottom: 1px solid var(--line-clr); */
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+    display: flex;
+    justify-content: space-around;
+    padding-left: 0px;
+    padding-bottom: 10px;
+}
+
+.search-input{
+  background-color: #222222;
+  border: 1px solid var(--line-clr);
+  border-right: none;
+  border-radius: 25px;
+  color: var(--text-clr);
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+
+.search-input input[type='text']{
+  background-color: var(--hover-clr);
+  background-color: transparent;
+  padding: 2px;
+  color: var(--text-clr);
+  font-size: 18px;
+  border: none;
+  outline: none;
+  width: 85%;
+  flex-grow: 1;
+}
+
+.search-input .search-btn{
+  padding: 0;
+  color: var(--text-clr);
+  border: 1px solid transparent;
+  outline: none;
+}
+
+
+.search-filters{
+  flex-basis: content;
+}
+
+.search-filters button{
+  background-color: var(--dark-gray);
+  color: var(--text-clr);
+  border: 1px solid transparent;
+  outline: none;
+
+}
+
+.search-filters button:hover{
+  background-color: var(--hover-clr);
+}
