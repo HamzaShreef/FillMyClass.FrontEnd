@@ -42,6 +42,12 @@
   color: var(--secondary-text-clr);
 }
 
+.teacher-info .txt-info:nth-child(3){
+  font-size: 1.5rem;
+  color: var(--secondary-text-clr);
+}
+
+
 html, body {
   margin: 0;
   padding: 0;

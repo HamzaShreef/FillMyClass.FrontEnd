@@ -25,6 +25,9 @@
   --text-clr: #e6e6ef;
   --accent-clr: #5e63ff;
   --secondary-text-clr: #b0b3c1;
+  --card-clr:rgb(31,29,43);
+  --profile-clr:rgb(253,196,67);
+  --green-clr:rgb(61,213,152);
 }
 
 /*Global Styles*/
@@ -56,6 +59,8 @@ body{
   display: grid;
   grid-template-columns: auto 1fr;
 }
+
+
 
 /*Global Styles*/
 

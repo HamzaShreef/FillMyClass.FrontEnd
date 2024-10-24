@@ -1,7 +1,11 @@
 <div class="search-bar container">
   <div class="search-input col-8">
-    <input type="text" />
-    <button class="btn search-btn">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (input)="submitSearchQuery()"
+    />
+    <button class="btn search-btn" (click)="submitSearchQuery()">
       <i class="material-symbols-outlined"> search </i>
     </button>
   </div>

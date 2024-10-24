@@ -3,6 +3,8 @@
     min-height: 100dvh; */
     background-color: var(--base-clr);
    /* background-color: var(--dark-secondary);*/
+    width: 100%;
+    min-width: 97vw;
     color: var(--text-clr);
     display: grid;
     grid-template-columns: auto 1fr;
@@ -10,7 +12,7 @@
 
 .routed-content{
   /* border: .5em solid var(--bs-body-bg); */
-  background-color: var(--bs-dark);
+  /* background-color: var(--bs-dark); */
   margin-bottom: 100px;
   padding: 10px;
   /* margin: .5em;
@@ -27,6 +29,7 @@ app-navbar{
   position: sticky;
   top:0;
   align-self: start;
+  z-index: 1000;
 }
 
 @media (max-width: 800px) {
