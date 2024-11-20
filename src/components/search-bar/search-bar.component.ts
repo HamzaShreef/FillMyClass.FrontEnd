@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, output, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -15,12 +15,19 @@ export class SearchBarComponent {
   @Output()
   onSearch: EventEmitter<string>
 
+  @Output()
+  onFilter :EventEmitter<string>
   constructor(){
+    this.onFilter = new EventEmitter();
     this.onSearch=new EventEmitter<string>();
   }
 
   submitSearchQuery(){
     this.onSearch.emit(this.searchQuery);
+  }
+
+  filterClick(){
+    this.onFilter.emit();
   }
 
 }

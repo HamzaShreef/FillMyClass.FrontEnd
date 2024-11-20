@@ -8,6 +8,8 @@
     justify-content: space-around;
     padding-left: 0px;
     padding-bottom: 10px;
+    direction: rtl;
+    margin-bottom: 10px;
 }
 
 .search-input{

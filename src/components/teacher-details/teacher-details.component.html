@@ -1,0 +1,196 @@
+<div class="container my-4">
+  <!-- Teacher Card -->
+  <div class="card col-12 basic-info text-center">
+    <div class="gender-img">
+      <img
+        src="../assets/female_user.jpg"
+        *ngIf="teacher?.maleGender == false"
+        alt="user profile"
+      />
+      <img
+        src="../assets/male_user.jpg"
+        *ngIf="teacher?.maleGender"
+        alt="user profile"
+      />
+    </div>
+    <div class="card col-12 txt-info">
+      <h3>{{ teacher?.firstName + " " + teacher?.lastName }}</h3>
+      <div class="horizontal-info">
+        <div class="row justify-content-center">
+          <label class="col-6"> :رقم الهاتف</label>
+          <p class="col-6">{{ teacher?.phone | phoneNumber }}</p>
+        </div>
+        <div class="row justify-content-center">
+          <label class="col-4"> :التخصص</label>
+          <p class="col-8">{{ teacher?.speciality }}</p>
+        </div>
+        <div class="row justify-content-center">
+          <label class="col-8"> :عدد الحصص الاسبوعية</label>
+          <p class="col-4">{{ teacher?.weekSessionsCount }}</p>
+        </div>
+        <!-- Info About currnt class if busy -->
+        <div
+          *ngIf="teacher?.available == false"
+          class="row justify-content-center live-info bg-dark"
+        >
+          <p class="col-8">{{ teacher?.roomStageAt | roomStage }}</p>
+          <p class="col-4">{{ teacher?.classRoomAt }} فصل</p>
+        </div>
+      </div>
+    </div>
+    <!-- All Teacher Sessions -->
+    <div class="teacher-sessions mt-4">
+      <h2 class="mb-3 p-4 mt-5 fw-bold display-3">الجدول الاسبوعي</h2>
+      <table
+        id="sessions-table"
+        class="table table-bordered table-striped table-dark"
+      >
+        <thead>
+          <tr>
+            <th>الحصة السابعة</th>
+            <th>الحصة السادسة</th>
+            <th>الحصة الخامسة</th>
+            <th>الحصة الرابعة</th>
+            <th>الحصة الثالثة</th>
+            <th>الحصة الثانية</th>
+            <th>الحصة الأولى</th>
+            <th>اليوم</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Sunday Row -->
+          <tr>
+            <td>
+              {{ getSession(0, 7) }}
+            </td>
+            <td>
+              {{ getSession(0, 6) }}
+            </td>
+            <td>
+              {{ getSession(0, 5) }}
+            </td>
+            <td>
+              {{ getSession(0, 4) }}
+            </td>
+            <td>
+              {{ getSession(0, 3) }}
+            </td>
+            <td>
+              {{ getSession(0, 2) }}
+            </td>
+            <td>
+              {{ getSession(0, 1) }}
+            </td>
+            <td>الأحد</td>
+          </tr>
+          <!-- Monday Row -->
+          <tr>
+            <td>
+              {{ getSession(1, 7) }}
+            </td>
+            <td>
+              {{ getSession(1, 6) }}
+            </td>
+            <td>
+              {{ getSession(1, 5) }}
+            </td>
+            <td>
+              {{ getSession(1, 4) }}
+            </td>
+            <td>
+              {{ getSession(1, 3) }}
+            </td>
+            <td>
+              {{ getSession(1, 2) }}
+            </td>
+            <td>
+              {{ getSession(1, 1) }}
+            </td>
+            <td>الاثنين</td>
+          </tr>
+          <!-- Tuesday Row -->
+          <tr>
+            <td>
+              {{ getSession(2, 7) }}
+            </td>
+            <td>
+              {{ getSession(2, 6) }}
+            </td>
+            <td>
+              {{ getSession(2, 5) }}
+            </td>
+            <td>
+              {{ getSession(2, 4) }}
+            </td>
+            <td>
+              {{ getSession(2, 3) }}
+            </td>
+            <td>
+              {{ getSession(2, 2) }}
+            </td>
+            <td>
+              {{ getSession(2, 1) }}
+            </td>
+            <td>الثلاثاء</td>
+          </tr>
+          <!-- Wednessday Row -->
+          <tr>
+            <td>
+              {{ getSession(3, 7) }}
+            </td>
+            <td>
+              {{ getSession(3, 6) }}
+            </td>
+            <td>
+              {{ getSession(3, 5) }}
+            </td>
+            <td>
+              {{ getSession(3, 4) }}
+            </td>
+            <td>
+              {{ getSession(3, 3) }}
+            </td>
+            <td>
+              {{ getSession(3, 2) }}
+            </td>
+            <td>
+              {{ getSession(3, 1) }}
+            </td>
+            <td>الأربعاء</td>
+          </tr>
+          <!-- Thursday Row -->
+          <tr>
+            <td>
+              {{ getSession(4, 7) }}
+            </td>
+            <td>
+              {{ getSession(4, 6) }}
+            </td>
+            <td>
+              {{ getSession(4, 5) }}
+            </td>
+            <td>
+              {{ getSession(4, 4) }}
+            </td>
+            <td>
+              {{ getSession(4, 3) }}
+            </td>
+            <td>
+              {{ getSession(4, 2) }}
+            </td>
+            <td>
+              {{ getSession(4, 1) }}
+            </td>
+            <td>الخميس</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Add Sessions To Teacher -->
+    <div class="add-session mt-5">
+      <button class="btn btn-success fa-2x" (click)="addSession()">
+        إضافة حصة
+      </button>
+    </div>
+  </div>
+</div>

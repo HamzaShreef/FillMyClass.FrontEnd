@@ -1,0 +1,45 @@
+<div class="p-4 popup-container">
+  <div class="row">
+    <div class="col-8">
+      <select
+        name="filterState"
+        class="form-select bg-dark"
+        [(ngModel)]="selectedFiltering"
+      >
+        <option [value]="0">الجميع</option>
+        <option [value]="1">المتاح الآن</option>
+      </select>
+    </div>
+    <label class="col-4">عرض</label>
+  </div>
+  <div class="row mt-4">
+    <div class="col-8">
+      <select
+        name="sortState"
+        class="form-select bg-dark"
+        [(ngModel)]="selectedSorting"
+      >
+        <option [value]="0">بدون ترتيب</option>
+        <option [value]="1">الحصص المتاحة</option>
+        <option [value]="2">الحصص الاسبوعية</option>
+      </select>
+    </div>
+    <label class="col-4">الترتيب</label>
+  </div>
+  <div class="row mt-4">
+    <div class="col-8">
+      <select
+        name="sortType"
+        class="form-select bg-dark"
+        [(ngModel)]="selectedSortingType"
+      >
+        <option [value]="0">تصاعدي</option>
+        <option [value]="1">تنازلي</option>
+      </select>
+    </div>
+    <label class="col-4">نوع الترتيب</label>
+  </div>
+  <button class="btn btn-success mt-5 w-100 d-block" (click)="closeDialog()">
+    تأكيد
+  </button>
+</div>

@@ -12,74 +12,28 @@
   </div>
 </div>
 <div class="row rooms-container">
-  <div class="card classroom-card col-md-6 col-lg-4">
+  @for (room of roomsList; track $index) {
+  <div class="card classroom-card col-md-8 col-lg-4">
     <div class="card-img">
-      <p>3/1</p>
+      <p>{{ room.stage }}/{{ room.stageSequnce }}</p>
     </div>
     <div class="txt-info">
-      <p class="class-stage">الصف الثالث</p>
-      <p class="class-count">عدد الطلاب: <span>30</span></p>
+      <p class="class-stage">{{ room.stage | roomStage }}</p>
+      <p class="class-count">
+        مكان الفصل:
+        <span style="color: #c9e9d2; font-weight: bold">{{ room.floor }}</span>
+      </p>
+
+      <div *ngIf="room.currentSubject != undefined" class="live-txt">
+        <p *ngIf="room.currentSubject != undefined">
+          {{ room.currentSubject }}
+        </p>
+
+        <p *ngIf="room.currentTeacher != undefined">
+          {{ room.currentTeacher }}
+        </p>
+      </div>
     </div>
   </div>
-  <!-- Next card-->
-  <div class="card classroom-card col-md-6 col-lg-4">
-    <div class="card-img">
-      <p>3/1</p>
-    </div>
-    <div class="txt-info">
-      <p class="class-stage">الصف الثالث</p>
-      <p class="class-count">عدد الطلاب: <span>30</span></p>
-    </div>
-  </div>
-  <!-- Next card-->
-  <div class="card classroom-card col-md-6 col-lg-4">
-    <div class="card-img">
-      <p>3/1</p>
-    </div>
-    <div class="txt-info">
-      <p class="class-stage">الصف الثالث</p>
-      <p class="class-count">عدد الطلاب: <span>30</span></p>
-    </div>
-  </div>
-  <!-- Next card-->
-  <div class="card classroom-card col-md-6 col-lg-4">
-    <div class="card-img">
-      <p>3/1</p>
-    </div>
-    <div class="txt-info">
-      <p class="class-stage">الصف الثالث</p>
-      <p class="class-count">عدد الطلاب: <span>30</span></p>
-    </div>
-  </div>
-  <!-- Next card-->
-  <div class="card classroom-card col-md-6 col-lg-4">
-    <div class="card-img">
-      <p>3/1</p>
-    </div>
-    <div class="txt-info">
-      <p class="class-stage">الصف الثالث</p>
-      <p class="class-count">عدد الطلاب: <span>30</span></p>
-    </div>
-  </div>
-  <!-- Next card-->
-  <div class="card classroom-card col-md-6 col-lg-4">
-    <div class="card-img">
-      <p>3/1</p>
-    </div>
-    <div class="txt-info">
-      <p class="class-stage">الصف الثالث</p>
-      <p class="class-count">عدد الطلاب: <span>30</span></p>
-    </div>
-  </div>
-  <!-- Next card-->
-  <div class="card classroom-card col-md-6 col-lg-4">
-    <div class="card-img">
-      <p>3/1</p>
-    </div>
-    <div class="txt-info">
-      <p class="class-stage">الصف الثالث</p>
-      <p class="class-count">عدد الطلاب: <span>30</span></p>
-    </div>
-  </div>
-  <!-- Next card-->
+  }
 </div>

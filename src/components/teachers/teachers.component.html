@@ -1,7 +1,10 @@
-<app-search-bar (onSearch)="filterBySearchQuery($event)"></app-search-bar>
+<app-search-bar
+  (onSearch)="filterBySearchQuery($event)"
+  (onFilter)="openFilterDialog()"
+></app-search-bar>
 <div class="cards-container row text-secondary">
   @for (teacher of searchedList; track $index) {
-  <div class="card teacher-card">
+  <a class="card teacher-card" [routerLink]="['/teachers', teacher.teacherId]">
     <div class="info-img">
       <span>{{ teacher.firstName[0] }}</span>
     </div>
@@ -45,6 +48,6 @@
 
       }
     </div>
-  </div>
+  </a>
   }
 </div>

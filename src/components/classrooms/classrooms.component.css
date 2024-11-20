@@ -6,6 +6,8 @@
   margin-bottom: 10px;
   border-radius: 10px;
   cursor: pointer;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .classroom-card:hover{
@@ -15,14 +17,14 @@
 .rooms-container{
   padding-top: 10px;
   gap: 1rem;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .card-img{
-    padding-top: 10px;
+    padding-top: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-
+    font-weight: bold;
     margin-inline-start: 0; /* This will be 'margin-right' in LTR and 'margin-left' in RTL */
     margin-inline-end: auto;
 
@@ -32,10 +34,6 @@
     width: 100px;
     height: 100px;
     text-align: center;
-}
-
-.txt-info{
-  padding: 10px;
 }
 
 
@@ -49,6 +47,7 @@
     justify-content: space-around;
     padding-left: 0px;
     padding-bottom: 10px;
+    direction: rtl;
 }
 
 .search-input{
@@ -96,4 +95,42 @@
 
 .search-filters button:hover{
   background-color: var(--hover-clr);
+}
+
+
+.txt-info{
+  padding: 10px;
+  text-align: end;
+}
+
+.txt-info .class-count{
+  margin-top: 10px;
+  color: #8CABFF;
+
+  font-size: 12px;
+  text-decoration-line: underline;
+}
+
+.txt-info .class-stage{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.live-txt{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #FFF4B7;
+}
+
+.live-txt p{
+    margin: 0;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    background-color: #666;
+    font-weight: bold;
+    box-shadow: 0px 0px 4px;
 }

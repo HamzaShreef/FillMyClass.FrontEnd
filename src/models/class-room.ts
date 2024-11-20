@@ -1,3 +1,5 @@
+import { Session, SessionWithTeacher } from "./session";
+
 export interface ClassRoom {
   roomId: number;
   name: string;
@@ -6,4 +8,10 @@ export interface ClassRoom {
   stageSequnce: number;
   floor: string;
   studentsCount: number;
+}
+
+export interface ClassRoomWithSessions extends ClassRoom{
+  sessions: SessionWithTeacher[]
+  currentSubject?:string
+  currentTeacher?:string
 }

@@ -1,0 +1,13 @@
+.add-session-popup{
+  min-width: 300px;
+  padding: 20px;
+  direction: rtl;
+  font-size: 18px;
+}
+
+.add-session-popup select,option,.form-control{
+  font-size: 14px;
+  background-color: var(--dark-secondary);
+  color: var(--text-clr);
+  text-align: center;
+}

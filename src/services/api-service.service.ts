@@ -2,23 +2,30 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Teacher } from '../models/teacher';
 import { environment } from '../environments/environment.development';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
+import { ResponsePage } from '../models/response-page';
+import { ClassRoom, ClassRoomWithSessions } from '../models/class-room';
+import { UnitTimeService } from './unit-time.service';
+import { Session, SessionWithRoom } from '../models/session';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
-  constructor(private _httpClient:HttpClient) { }
+  constructor(private _httpClient:HttpClient,private _unitTimeMapper:UnitTimeService) { }
 
-  getLiveTeacherInfo(searchUnit:number):Observable<Teacher[]>{
+  getLiveTeachersInfo():Observable<Teacher[]>{
     let endpointParams=new HttpParams();
-    endpointParams = endpointParams.append('schoolId',1);
+    endpointParams = endpointParams.append('pageSize',50);
+    endpointParams = endpointParams.append('pageNum',1);
+    let searchUnit = this._unitTimeMapper.getCurrentUnit();
+    searchUnit = 5;
 
-    return this._httpClient.get<Teacher[]>(`${environment.baseApiUrl}/Teacher`,{
+    return this._httpClient.get<ResponsePage<Teacher>>(`${environment.baseApiUrl}/teachers/today-sessions`,{
       params: endpointParams,
     }).pipe(
-      map(apiList=>{
-        return this.computeAvailable(apiList,searchUnit)
+      map(apiResponse=>{
+        return this.computeAvailable(apiResponse.dataList,searchUnit)
       })
     );
   }
@@ -26,7 +33,14 @@ export class ApiServiceService {
 
   computeAvailable(lst:Teacher[],searchPinUnit:number=1):Teacher[]{
     lst.forEach(teacher=>{
-      teacher.unitsAvailable=0;
+      this.computeTeacherState(teacher,searchPinUnit)
+    })
+
+    return lst;
+  }
+
+  computeTeacherState(teacher:Teacher,searchPinUnit:number):Teacher{
+    teacher.unitsAvailable=0;
       let searchUnitIndex = teacher.sessions.findIndex(s=>s.startUnit==searchPinUnit);
 
       if(searchUnitIndex != -1){
@@ -54,8 +68,39 @@ export class ApiServiceService {
         searchUnitIndex=teacher.sessions.findIndex(s=>s.startUnit == searchPin)
       }
 
-    })
+    return teacher;
+  }
 
-    return lst;
+  getTeacherLiveInfo(teacherId:number){
+    let responseTeacher:Teacher | undefined;
+    let currentSearchUnit = this._unitTimeMapper.getCurrentUnit();
+    currentSearchUnit = 5;
+    let today = this._unitTimeMapper.getCurrentWeekDay();
+    let allSessions: SessionWithRoom[]
+
+    return this._httpClient.get<Teacher>(`${environment.baseApiUrl}/teachers/${teacherId}`)
+                              .pipe(map(t=>{
+                                if(t != undefined && t != null){
+                                    allSessions = t.sessions;
+                                    t.sessions = allSessions.filter(te => te.weekDay == today).sort((t1,t2)=>{
+                                    return t1.startUnit - t2.startUnit
+                                  })
+
+                                  responseTeacher = this.computeTeacherState(t,currentSearchUnit);
+                                  responseTeacher.sessions=allSessions
+
+                                  return responseTeacher
+                                }
+
+                                return t;
+                              }),catchError(error => {
+                                if (error.status === 404) {
+                                  // Return undefined if the response is 404
+                                  return of(undefined);
+                                }
+                                // Re-throw other errors
+                                return throwError(error);
+                              })
+                            );
   }
 }

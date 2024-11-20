@@ -1,0 +1,55 @@
+.gender-img img{
+  width: 100px;
+  border-radius: 50%;
+}
+
+.basic-info .txt-info{
+    font-size: 18px;
+    font-weight: 300;
+    word-spacing: .5rem;
+    font-weight: bold;
+    color: var(--accent-clr);
+}
+
+.basic-info .txt-info h3{
+    font-weight: bold;
+    font-size: 24px;
+    color: var(--accent-clr);
+    margin: 5px 0 20px 0;
+    /* color: var(--text-clr); */
+}
+
+.horizontal-info .row{
+  flex-direction: row-reverse;
+  border: 1px solid var(--line-clr);
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.horizontal-info .row label{
+  text-align: end;
+  color: var(--secondary-text-clr);
+}
+
+.horizontal-info .row p{
+  color: var(--text-clr);
+  text-align: start;
+}
+
+.horizontal-info .live-info{
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--line-clr);
+  padding: 20px 0;
+  box-shadow: 0 0 10px var(--line-clr);
+  color: var(--accent-clr) !important;
+}
+
+.horizontal-info .live-info p{
+  color: var(--accent-clr);
+  text-align: end;
+}
+
+#sessions-table td{
+  font-weight: bold;
+}

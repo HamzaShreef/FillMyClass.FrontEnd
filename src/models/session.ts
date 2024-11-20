@@ -1,12 +1,17 @@
 import { ClassRoom } from "./class-room";
+import { Teacher, TeacherBasic } from "./teacher";
 
 export interface Session {
   sessionId: number;
-  unitCount: number;
   startUnit: number;
   subject: string;
-  startTime: string;  // Using string to represent time in Angular (format can be adjusted as needed)
-  endTime: string;
-  wDay: number;
+  weekDay: number;
+}
+
+export interface SessionWithRoom extends Session{
   classRoom?: ClassRoom;
+}
+
+export interface SessionWithTeacher extends Session{
+  teacher:TeacherBasic
 }

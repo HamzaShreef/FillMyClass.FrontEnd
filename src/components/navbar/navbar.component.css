@@ -14,10 +14,6 @@
 }
 
 
-#sidebar ul{
-  list-style: none;
-}
-
 /* #sidebar > ul > li:first-child{
   display: flex;
   justify-content: flex-end;
@@ -30,7 +26,7 @@
   flex-direction: column;
   gap: 2em;
   /*Remove this later if you place profile info here*/
-  margin-top: 50%;
+  margin-top: 25%;
   padding-left: 0;
 }
 
@@ -75,6 +71,7 @@
   #sidebar{
     height: 70px;
     width: 100%;
+
     border-right: none;
     border-top: 1px solid var(--line-clr);
     padding: 0;

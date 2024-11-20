@@ -8,6 +8,7 @@
     color: var(--text-clr);
     display: grid;
     grid-template-columns: auto 1fr;
+    overflow: auto;
 }
 
 .routed-content{
@@ -15,11 +16,30 @@
   /* background-color: var(--bs-dark); */
   margin-bottom: 100px;
   padding: 10px;
+  direction: ltr;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
   /* margin: .5em;
   border-radius: .5em;
   border: 1px solid var(--line-clr);
   margin-left: 5px; */
 }
+
+@media (max-width:720px) {
+  .routed-content{
+    min-width: 390px;
+  }
+}
+
+
+@media (min-width:780px) {
+  .routed-content{
+    /* min-width: 720px; */
+    min-width: 530px;
+  }
+}
+
 
 app-navbar{
   box-sizing: border-box;

@@ -1,0 +1,26 @@
+:root{
+  --popup-background-clr: #222222;
+}
+
+.popup-container{
+  direction: ltr;
+  min-width: 300px;
+  font-size: 18px;
+  color: var(--secondary-text-clr);
+  background-color: var(--popup-background-clr);
+}
+
+.popup-container .btn{
+  font-size: 14px;
+}
+
+.popup-container select,option{
+  background-color: black;
+  box-shadow: 1px 1px 2px black;
+  font-size: 14px;
+  color: var(--secondary-text-clr) !important;
+}
+
+.popup-container option:hover{
+  background-color: gray;
+}
