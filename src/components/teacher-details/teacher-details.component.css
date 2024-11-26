@@ -53,3 +53,9 @@
 #sessions-table td{
   font-weight: bold;
 }
+
+.basic-info .card{
+  background-color: transparent !important;
+}
+
+

@@ -1,8 +1,14 @@
 <app-search-bar
   (onSearch)="filterBySearchQuery($event)"
   (onFilter)="openFilterDialog()"
-></app-search-bar>
-<div class="cards-container row text-secondary">
+>
+</app-search-bar>
+
+<div *ngIf="isLoading" class="loader-container">
+  <div class="loader"></div>
+</div>
+
+<div *ngIf="!isLoading" class="cards-container row text-secondary">
   @for (teacher of searchedList; track $index) {
   <a class="card teacher-card" [routerLink]="['/teachers', teacher.teacherId]">
     <div class="info-img">

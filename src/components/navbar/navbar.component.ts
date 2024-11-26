@@ -9,5 +9,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  activeLink: string = 'teachers';
 
+  setActiveLink(link: string) {
+    this.activeLink = link;
+  }
 }

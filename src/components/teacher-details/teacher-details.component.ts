@@ -17,6 +17,7 @@ import { AddTeacherSessionPopupComponent } from '../add-teacher-session-popup/ad
 })
 export class TeacherDetailsComponent implements OnInit{
   teacher:Teacher | undefined
+  isLoading:boolean=true
   constructor(private _activatedRoute:ActivatedRoute,
               private _router:Router,
               private _apiService:ApiServiceService,
@@ -34,13 +35,27 @@ export class TeacherDetailsComponent implements OnInit{
 
 
         this.teacher=teacherInfo;
+        this.isLoading=false;
+
+        console.log(this.teacher);
+
         }
     )
+
+
 
   }
 
   addSession(){
     this._addSessionDialog.open(AddTeacherSessionPopupComponent);
+  }
+
+  editSession(){
+
+  }
+
+  deleteSession(){
+
   }
 
   getSession(wDay:number,sessionUnit:number){

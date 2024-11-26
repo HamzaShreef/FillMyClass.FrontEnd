@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from '../environments/environment.development';
-import { ClassRoomWithSessions } from '../models/class-room';
+import { ClassRoom, ClassRoomWithSessions } from '../models/class-room';
 import { ResponsePage } from '../models/response-page';
 import { UnitTimeService } from './unit-time.service';
 
@@ -63,6 +63,20 @@ export class RoomApiService {
     room.currentTeacher=currentSession?.teacher.firstName+' '+currentSession?.teacher.lastName
 
     return room;
+  }
+
+  getAll():Observable<ClassRoom[]>{
+    let roomsParams = new HttpParams();
+    roomsParams = roomsParams.append('pageSize',40);
+    roomsParams = roomsParams.append('pageNum',1);
+
+    return this._httpClient.get<ResponsePage<ClassRoom>>(`${environment.baseApiUrl}/rooms`,{
+      params: roomsParams
+    }).pipe(
+      map(page=>{
+        return page.dataList;
+      })
+    )
   }
 
 }

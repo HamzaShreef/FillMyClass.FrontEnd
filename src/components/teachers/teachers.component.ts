@@ -17,7 +17,7 @@ import { TeacherFilter, TeacherFilterState, TeachersOrderBy, TeacherSortingType 
   styleUrl: './teachers.component.css'
 })
 export class TeachersComponent implements OnInit {
-
+  isLoading:boolean=true
   teachersList:Teacher[]=[]
   searchedList:Teacher[]=[]
   filterState: TeacherFilterState
@@ -32,6 +32,7 @@ export class TeachersComponent implements OnInit {
       next:(data)=>{
         this.teachersList=data;
         this.searchedList=data;
+        this.isLoading=false
       }
     })
 
@@ -49,6 +50,7 @@ export class TeachersComponent implements OnInit {
   }
 
   refreshState(){
+    this.isLoading=true
     if(this.filterState.filter== TeacherFilter.AvailableOnly){
 
       this.searchedList=this.teachersList.filter(t=>{
@@ -89,7 +91,7 @@ export class TeachersComponent implements OnInit {
       }
     }
 
-
+    this.isLoading=false
   }
 
   filterBySearchQuery(searchQuery: string) {

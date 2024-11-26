@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ClassroomsComponent implements OnInit{
   roomsList!: ClassRoomWithSessions[]
+  isLoading:boolean=true
 
   constructor(private _roomService:RoomApiService){
 
@@ -30,6 +31,7 @@ export class ClassroomsComponent implements OnInit{
       console.log(rooms);
 
       this.roomsList=rooms;
+      this.isLoading=false
     })
   }
 

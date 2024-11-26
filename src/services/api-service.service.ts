@@ -19,19 +19,24 @@ export class ApiServiceService {
     endpointParams = endpointParams.append('pageSize',50);
     endpointParams = endpointParams.append('pageNum',1);
     let searchUnit = this._unitTimeMapper.getCurrentUnit();
-    searchUnit = 5;
+    // searchUnit = 5;
+
 
     return this._httpClient.get<ResponsePage<Teacher>>(`${environment.baseApiUrl}/teachers/today-sessions`,{
       params: endpointParams,
     }).pipe(
       map(apiResponse=>{
+        console.log("serachUnit");
+
+        console.log(searchUnit);
+
         return this.computeAvailable(apiResponse.dataList,searchUnit)
       })
     );
   }
 
 
-  computeAvailable(lst:Teacher[],searchPinUnit:number=1):Teacher[]{
+  computeAvailable(lst:Teacher[],searchPinUnit:number):Teacher[]{
     lst.forEach(teacher=>{
       this.computeTeacherState(teacher,searchPinUnit)
     })
@@ -42,6 +47,12 @@ export class ApiServiceService {
   computeTeacherState(teacher:Teacher,searchPinUnit:number):Teacher{
     teacher.unitsAvailable=0;
       let searchUnitIndex = teacher.sessions.findIndex(s=>s.startUnit==searchPinUnit);
+      console.log("searchUnit Index");
+      console.log(searchUnitIndex);
+      console.log(searchPinUnit);
+
+
+
 
       if(searchUnitIndex != -1){
         teacher.available=false;
@@ -74,7 +85,7 @@ export class ApiServiceService {
   getTeacherLiveInfo(teacherId:number){
     let responseTeacher:Teacher | undefined;
     let currentSearchUnit = this._unitTimeMapper.getCurrentUnit();
-    currentSearchUnit = 5;
+    // currentSearchUnit = 5;
     let today = this._unitTimeMapper.getCurrentWeekDay();
     let allSessions: SessionWithRoom[]
 

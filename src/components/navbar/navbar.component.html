@@ -3,33 +3,40 @@
     <li>
       <a
         routerLink="/teachers"
-        routerLinkActive="active-link"
-        class="active-link"
+        [class.active-link]="activeLink === 'teachers'"
+        (click)="setActiveLink('teachers')"
       >
         <i class="fa-solid fa-people-group"></i>
-        <!-- <span>Teachers</span> -->
         <span>المعلمون</span>
       </a>
     </li>
     <li>
-      <a routerLink="/sessions" routerLinkActive="active-link">
+      <a
+        routerLink="/sessions"
+        [class.active-link]="activeLink === 'sessions'"
+        (click)="setActiveLink('sessions')"
+      >
         <i class="fa-solid fa-chalkboard-user"></i>
-        <!-- <span>Sessions</span> -->
         <span>الحصص</span>
       </a>
     </li>
     <li>
-      <a routerLink="absences" routerLinkActive="active">
-        <!-- <i class="material-symbols-outlined">account_circle_off</i> -->
+      <a
+        routerLink="/absences"
+        [class.active-link]="activeLink === 'absences'"
+        (click)="setActiveLink('absences')"
+      >
         <i class="material-symbols-outlined">group_off</i>
-        <!-- <span>Absences</span> -->
         <span>الغيابات</span>
       </a>
     </li>
     <li>
-      <a routerLink="/classrooms">
+      <a
+        routerLink="/classrooms"
+        [class.active-link]="activeLink === 'classrooms'"
+        (click)="setActiveLink('classrooms')"
+      >
         <i class="material-symbols-outlined">dashboard</i>
-        <!-- <span>Classrooms</span> -->
         <span>الفصول</span>
       </a>
     </li>

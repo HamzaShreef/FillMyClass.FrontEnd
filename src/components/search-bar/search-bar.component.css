@@ -21,12 +21,13 @@
   display: flex;
   justify-content: space-between;
   padding: 5px 10px;
+  font-family: poppins, 'Segoe UI', Tahoma, Geneva !important;
 }
 
 .search-input input[type='text']{
   background-color: var(--hover-clr);
   background-color: transparent;
-  padding: 2px;
+  padding: 2px 10px;
   color: var(--text-clr);
   font-size: 18px;
   border: none;
