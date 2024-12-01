@@ -8,26 +8,37 @@ export class UnitTimeService {
   getCurrentUnit():number{
     let dayStart = localStorage.getItem('schoolDayStart');
     let dayRecessStart = localStorage.getItem('schoolRecessStart');
-    let dayDuration = localStorage.getItem('schoolDayDuration')
+    let unitDuration = localStorage.getItem('schoolunitDuration')
     let dayRecessDuration = localStorage.getItem('schoolRecessDuration')
 
-    //By default let's assume day starts at 8:30 (Egypt Time Zone)
-    dayStart = dayStart == null ? '390' : dayStart
+    //By default let's assume day starts at 8:00 (Egypt Time Zone)
+    dayStart = dayStart == null ? '360' : dayStart
 
     //By default let's assume day recess starts at 11:30 (Egypt Time Zone)
-    dayRecessStart = dayRecessStart == null ? '570' : dayRecessStart;
+    dayRecessStart = dayRecessStart == null ? '540' : dayRecessStart;
 
     //By default let's assume recess duration is 30 minutes
     dayRecessDuration = dayRecessDuration == null ? '30' : dayRecessDuration;
 
     //By default let's assume sessions duration is 45 minutes
-    dayDuration = dayDuration == null ? '45' : dayDuration;
+    unitDuration = unitDuration == null ? '45' : unitDuration;
 
 
 
     let currentDate = new Date();
+    console.log("date: ");
+    console.log(currentDate);
+
+
     let totalMinutes = currentDate.getUTCHours() * 60;
     totalMinutes += currentDate.getUTCMinutes();
+
+
+    if(totalMinutes > parseInt(dayRecessStart)){
+      console.log("after recess");
+
+      totalMinutes = totalMinutes - parseInt(dayRecessDuration);
+    }
 
     totalMinutes = totalMinutes - parseInt(dayStart);
 
@@ -35,12 +46,11 @@ export class UnitTimeService {
     console.log(totalMinutes);
 
 
+    //console.log("before recess");
 
-    if(totalMinutes > parseInt(dayRecessStart)){
-      totalMinutes = totalMinutes - parseInt(dayRecessDuration);
-    }
 
-    let currentUnit = totalMinutes / parseInt(dayDuration)
+
+    let currentUnit = totalMinutes / parseInt(unitDuration)
     // console.log(currentUnit);
     currentUnit = Math.ceil(currentUnit)
 

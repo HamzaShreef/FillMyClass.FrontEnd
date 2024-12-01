@@ -1,9 +1,9 @@
-<div class="add-session-popup">
+<div class="add-session-popup" (focus)="clearErrors()">
   <div class="row">
     <div class="col-4">اختر الفصل</div>
     <div class="col-8">
-      <select class="form-select" [(ngModel)]="slectedRoomId">
-        @for (room of classRooms; track $index){
+      <select class="form-select" [(ngModel)]="selectionsConfig.selectedRoomId">
+        @for (room of selectionsConfig.roomsList; track $index){
         <option [value]="room.roomId">{{ room.name }}</option>
         }
       </select>
@@ -12,7 +12,11 @@
   <div class="row mt-4">
     <div class="col-4">اختر اليوم</div>
     <div class="col-8">
-      <select id="" class="form-select">
+      <select
+        id=""
+        class="form-select"
+        [(ngModel)]="selectionsConfig.selectedWeekDay"
+      >
         <option [value]="0">الأحد</option>
         <option [value]="1">الاثنين</option>
         <option [value]="2">الثلاثاء</option>
@@ -25,7 +29,11 @@
   <div class="row mt-4">
     <div class="col-4">اختر الحصة</div>
     <div class="col-8">
-      <select id="" class="form-select">
+      <select
+        id=""
+        class="form-select"
+        [(ngModel)]="selectionsConfig.selectedStartUnit"
+      >
         <option [value]="1">الأولى</option>
         <option [value]="2">الثانية</option>
         <option [value]="3">الثالثة</option>
@@ -47,7 +55,7 @@
         maxlength="20"
         minlength="2"
         required
-        [(ngModel)]="subjectName"
+        [(ngModel)]="selectionsConfig.subjectName"
         placeholder="المادة"
       />
     </div>
@@ -59,9 +67,17 @@
       } @if(subjectNameInput.errors?.['minlength']){
       <p class="text-danger">اسم المادة قصير جدا</p>
       }
+      <!-- Validation Message Errors -->
+      <p *ngIf="errorMessage != ''" class="text-danger">{{ errorMessage }}</p>
     </div>
   </div>
   <div class="row mt-4">
-    <button class="btn btn-success w-100 fa-1x">إضافة</button>
+    <button
+      [disabled]="submittingData"
+      class="btn btn-success w-100 fa-1x"
+      (click)="addSession()"
+    >
+      إضافة
+    </button>
   </div>
 </div>
